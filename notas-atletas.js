@@ -6,44 +6,46 @@ class mediasDosAtletas{
   }
 //................................................................
   ordenarNotas() {
-  this.Atletas.forEach(function(atleta){
-    
-    atleta.notas=atleta.notas.sort(function(a,b){
-      return a -b;
-    });
-    console.log("Atleta: " + Atletas.nome,"Atleta:"+ Atletas.notas)
-  });
+notas.sort((a, b) => a.notas - b.notas)
+      
+    //console.log("Atleta: " + Atletas.nome,"Atleta:"+ Atletas.notas)
+  };
 }
 //............................................................
-  descartaMenornEMaiorNota( ) {
+  descartaMenornEMaiorNota() {
 
 this.Atletas.forEach(function(atleta){
   atleta.notas=atleta.notas.sort(function (a,b){
     return a-b;
   });
 
-  atleta.notas=atleta.notas.slice(1, 6);
-  console.log("Atleta"+atleta.nome+"Notas descatada"+atleta.notas)
+  atleta.notas=atleta.notas.slice(1, 4);
+  //console.log("Atleta"+atleta.nome+"Notas descatada"+atleta.notas)
 });
 }
 //......................................................................
 
 somaDasNotas() {
-
-  let soma=0
-  this.Atletas.notas.forEach(function(atleta){
-    console.log(atletas.nome, atleta.notas)
-    soma=soma +atleta
-    
+  this.Atletas.forEach(function(atleta){
+    atleta.somaDasNotas=atleta.notas.reduce(function(total,nota){
+       return total + nota;
+    },0);
+    //console.log(atletas.nome, atleta.notas)
   })
-  return soma / this.atletas.notas.length
   
 }
-//..........................................
 
-
-
+mediaDasNotas() {
+this.Atletas.forEach(function(atleta){
+  atleta.mediaDasNotas = atleta.somaDasNotas / atleta.notas.length
+  //console.log(atleta.nome,atleta.notas)
+})
 }
+//..........................................
+};
+
+
+
 
 
 let atletas = [
@@ -63,5 +65,12 @@ let atletas = [
     nome: "Bruno Castro",
     notas: [10, 10, 10, 9, 9.5]
   }
-]
+];
 
+let calcularMedia = new mediasDosAtletas(atletas)
+calcularMedia.ordenarNotas();
+calcularMedia.descartaMenornEMaiorNota();
+calcularMedia.somaDasNotas();
+calcularMedia.mediaDasNotas()
+
+console.log(calcularMedia.Atletas);
