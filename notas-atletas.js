@@ -1,26 +1,29 @@
 
 class mediasDosAtletas{
-  
   constructor(Atletas){
     this.Atletas=Atletas;
   }
-//................................................................
-  ordenarNotas() {
-notas.sort((a, b) => a.notas - b.notas)
-      
-    //console.log("Atleta: " + Atletas.nome,"Atleta:"+ Atletas.notas)
+// Classe para Ordenar notas dos Atletas
+ordenarNotas() {
+ 
+    this.Atletas.forEach(function (atleta) {
+    atletas.notas = atleta.notas.sort(function (a, b) {
+        return a - b;
+      });
+      console.log("Atleta: " + atleta.nome + ", Notas: " + atleta.notas);
+    })
   };
-}
-//............................................................
-  descartaMenornEMaiorNota() {
 
+//Classe para descarta menor e maior nota
+  descartaMenornEMaiorNota() {
+// Ordenar notas
 this.Atletas.forEach(function(atleta){
   atleta.notas=atleta.notas.sort(function (a,b){
     return a-b;
   });
-
-  atleta.notas=atleta.notas.slice(1, 4);
-  //console.log("Atleta"+atleta.nome+"Notas descatada"+atleta.notas)
+//remove primeira e ultima nota
+  atleta.notas=atleta.notas.slice(1, atleta.notas.length - 1);
+  console.log("Atleta:"+atleta.nome+" - Notas descatada:"+atleta.notas)
 });
 }
 //......................................................................
@@ -43,8 +46,6 @@ this.Atletas.forEach(function(atleta){
 }
 //..........................................
 };
-
-
 
 
 
@@ -71,6 +72,6 @@ let calcularMedia = new mediasDosAtletas(atletas)
 calcularMedia.ordenarNotas();
 calcularMedia.descartaMenornEMaiorNota();
 calcularMedia.somaDasNotas();
-calcularMedia.mediaDasNotas()
+calcularMedia.mediaDasNotas();
 
 console.log(calcularMedia.Atletas);
